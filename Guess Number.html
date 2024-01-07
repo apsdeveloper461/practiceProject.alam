@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+      body {
+        color: aliceblue;
+        background-color: rgb(29, 28, 28);
+      }
+      .container{
+        
+        margin: 0px auto;
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items:center ;
+     }
+     
+   
+     .form {
+         border: 2px solid #2c2b2b;
+         border-radius: 10px;
+         width: 70vw;
+         display: flex;
+         flex-direction: column;
+         padding: 30px;
+        align-items: center;
+        margin: 10px auto;
+        box-shadow: 2px 2px 4px #141414 inset;
+      }
+      .num,
+      #btn {
+        margin:10px auto;
+        padding: 5px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        outline: 0;
+      }
+      .num:focus {
+        outline: 2px solid rgb(220, 202, 202);
+      }
+      #btn {
+        margin: 40px;
+        font-weight: 700;
+        color: rgb(15, 11, 11);
+        padding: 10px 20px;
+        background: rgb(229, 235, 238);
+      }
+      h3{
+        color: beige;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">ApS Developer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Guess Number.html">Guess Game</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Project Menu
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="Mode Changer.html">Mode Switcher</a>
+                <a class="dropdown-item" href="Color switcher.html">Color Switcher</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="BMI Calculator.html">BMI Calculator</a>
+                <a class="dropdown-item" href="Guess Number.html">Guesses Number Game</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container">
+      <h1>Game Guesses a Number</h1>
+      <div class="form">
+        <div>
+            <h2>Guidelines:</h2>
+            <h3 >Try to guess a number which is randomly generate from 1 to 100 , you have 10 chaces to Guess correct number</h3>
+        </div>
+        <div style="margin-top: 20px;">
+          <h2>Guess a Number:</h2>
+          <input
+            type="number"
+            class="num"
+            id="guessNum"
+            placeholder="Enter Number here ..."
+          />
+        </div>
+        <h3 id="info">Hello</h3>
+        <input type="button" id="btn" value="Submit Guess" />
+        <b>Remaining Chances :::  <h2 style="display: inline;" id="chance">10</h2></b>
+        <b><br><div id="result">No result now</div></b>
+      </div>
+    </div>
+  </body>
+  <script>
+  const rand=Math.floor((Math.random()*(100))+1);
+  console.log(rand);
+  const btn=document.querySelector("#btn");
+//   console.log(Info.innerHTML)
+ btn.addEventListener('click',()=>{
+    let guessNo=Number(document.getElementById("guessNum").value);
+    console.log(rand);
+    console.log(guessNo);
+    info=" ";
+    if(chance.innerHTML===0)
+        document.getElementById('result').innerHTML=`....You  Loose this Game `;
+    else if(guessNo<1||guessNo>100||!guessNo){
+        document.getElementById('info').innerHTML="submit the number from 1 to 100...";
+    }
+    else{
+        document.getElementById('chance').innerHTML=document.getElementById('chance').innerHTML-1;
+            if(guessNo==rand){
+                document.getElementById('info').innerHTML= document.getElementById('result').innerHTML=`....You win this Game in ${10-document.getElementById('chance').innerHTML} chances....`;
+                alert(`....You win this Game in ${10-document.getElementById('chance').innerHTML} chances....`);
+            }
+            else if(guessNo>rand){
+                document.getElementById('info').innerHTML="The actual number is less the guesses Number.";
+            }
+            else if(guessNo<rand){
+                document.getElementById('info').innerHTML="The actual number is greater the guesses Number.";
+
+            }
+    }
+ })
+   
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</html>
